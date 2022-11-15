@@ -15,6 +15,7 @@ public class AppTest {
 
     @Test
     public void testAddHintsTwoMines() {
-        assertEquals([[-1,1,0,0],[2,2,1,0],[1,-1,1,0],[1,1,1,0]], App.addHints("-1...\n....\n.-1..\n...."));
+        int[][] output = {{-1,1,0,0},{2,2,1,0},{1,-1,1,0},{1,1,1,0}};
+        assertEquals(output, App.addHints("-1...\n....\n.-1..\n...."));
     }
 }
