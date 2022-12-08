@@ -2,30 +2,20 @@ import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println(addHints("*...\n....\n.*..\n...."));
+        System.out.println("nothing yet");
     }
 
-    public static int[][] addHints(String input) {
-        int[][] grid = new int[4][4];
-        int x = 0;
-        int y = 0;
+    public static int[][] addHints(int[][] input) {
+        int[][] grid = new int[input.length][input[0].length];
 
-        for (int i = 0; i < input.length(); i++) {
-            char c = input.charAt(i);
-            if (c == '\n')
-                continue;
-            if (c == '*') {
-                grid[y][x] = -1;
-                incrementNeighbors(grid, x, y);
-            }
-            if (x < 3) {
-                x = x + 1;
-            } else {
-                x = 0;
-                y = y + 1;
-            }
+        for (int y = 0; y < input.length; y++) {
+            int[] row = input[y];
+            for (int x = 0; x < row.length; x++)
+                if (row[x] == -1) {
+                    grid[y][x] = -1;
+                    incrementNeighbors(grid, x, y);
+                }
         }
-
         return grid;
     }
 
@@ -37,7 +27,7 @@ public class App {
             if (grid[y - 1][x] > -1) {
                 grid[y - 1][x] += 1;
             }
-            if (y < 3) {
+            if (x < grid.length - 1) {
                 if (grid[y - 1][x + 1] > -1) {
                     grid[y - 1][x + 1] += 1;
                 }
@@ -45,23 +35,23 @@ public class App {
             if (grid[y][x - 1] > -1) {
                 grid[y][x - 1] += 1;
             }
-            if (x < 3) {
+            if (y < grid[0].length - 1) {
                 if (grid[y + 1][x - 1] > -1) {
                     grid[y + 1][x - 1] += 1;
                 }
             }
         }
-        if (x < 3) {
+        if (y < grid[0].length - 1) {
             if (grid[y + 1][x] > -1) {
                 grid[y + 1][x] += 1;
             }
         }
-        if (y < 3) {
+        if (x < grid.length - 1) {
             if (grid[y][x + 1] > -1) {
                 grid[y][x + 1] += 1;
             }
         }
-        if (x < 3 && y < 3) {
+        if (x < grid[0].length - 1 && y < grid.length - 1) {
             if (grid[y + 1][x + 1] > -1) {
                 grid[y + 1][x + 1] += 1;
             }
