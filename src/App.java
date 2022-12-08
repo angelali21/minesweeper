@@ -20,9 +20,11 @@ public class App {
     }
 
     public static void incrementNeighbors(int[][] grid, int x, int y) {
-        if (x > 0 && y > 0) {
-            if (grid[y - 1][x - 1] > -1) {
-                grid[y - 1][x - 1] += 1;
+        if (y > 0) {
+            if (x > 0) {
+                if (grid[y - 1][x - 1] > -1) {
+                    grid[y - 1][x - 1] += 1;
+                }
             }
             if (grid[y - 1][x] > -1) {
                 grid[y - 1][x] += 1;
@@ -32,8 +34,10 @@ public class App {
                     grid[y - 1][x + 1] += 1;
                 }
             }
-            if (grid[y][x - 1] > -1) {
-                grid[y][x - 1] += 1;
+            if (x > 0) {
+                if (grid[y][x - 1] > -1) {
+                    grid[y][x - 1] += 1;
+                }
             }
             if (y < grid[0].length - 1) {
                 if (grid[y + 1][x - 1] > -1) {
